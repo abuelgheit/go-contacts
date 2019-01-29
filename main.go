@@ -21,6 +21,11 @@ func main() {
 	router.HandleFunc("/co/api/me/contacts/{id}", controllers.GetContact).Methods("GET")
 	router.HandleFunc("/co/api/me/contacts/{id}", controllers.DeleteContact).Methods("DELETE")
 
+	router.HandleFunc("/co/api/todos/new", controllers.CreateTodo).Methods("POST")
+	router.HandleFunc("/co/api/me/todos", controllers.GetTodos).Methods("GET")
+	router.HandleFunc("/co/api/me/todos/{id}", controllers.DeleteTodo).Methods("DELETE")
+	router.HandleFunc("/co/api/me/todos/{id}", controllers.GetTodo).Methods("GET")
+
 	router.Use(app.JwtAuthentication) //attach JWT auth middleware
 
 	//router.NotFoundHandler = app.NotFoundHandler
